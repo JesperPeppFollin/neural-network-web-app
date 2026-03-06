@@ -22,8 +22,11 @@ export default function Home() {
   }
 
   return (
-    <main style={{ padding: 40 }}>
-      <h1>API Test</h1>
+    <main>
+      
+      <h1>Train and run model</h1>
+
+      <p>This is a neural network in its simplest form. </p>
 
       <button onClick={testAPI}>Run Python API</button>
 
