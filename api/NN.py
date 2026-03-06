@@ -6,7 +6,7 @@ import urllib.request
 def load_mnist_from_npz(cache_dir=None):
     """Load MNIST from the public .npz file without requiring keras/tensorflow."""
     if cache_dir is None:
-        cache_dir = pathlib.Path.home() / ".cache" / "mnist"
+        cache_dir = pathlib.Path("/tmp/mnist")
     else:
         cache_dir = pathlib.Path(cache_dir)
 
