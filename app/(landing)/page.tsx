@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
-import { Loader } from "./components/loader/loader";
+import { Loader } from "../components/loader/loader";
+import { Tooltip } from "../components/tooltip/tooltip";
+import explanations from "../tooltip_explanations.json";
 
 type ApiResponse = {
   status: string;
@@ -43,19 +45,19 @@ export default function Home() {
         classify handwritten digits from the{" "}
         <a href="https://www.tensorflow.org/datasets/catalog/mnist">MNIST</a>{" "}
         dataset. Each 28x28 image is flattened into a vector and passed through
-        several fully connected layers with ReLU activations, followed by a
-        softmax output layer that produces probabilities for the digits 0-9.
+        several fully connected layers with <Tooltip title="ReLU" explanation={explanations.relu} /> activations, followed by a 
+        <Tooltip title="Softmax" explanation={explanations.softmax} /> output layer that produces probabilities for the digits 0-9.
       </p>
 
       <p>
-        The network is trained using cross-entropy loss and mini-batch gradient
-        descent. During training, backpropagation computes how each weight
+        The network is trained using <Tooltip title="cross-entropy" explanation={explanations.cross_entropy} /> loss and mini-batch <Tooltip title="gradient
+        descent" explanation={explanations.gradient_descent} />. During training, <Tooltip title="backpropagation" explanation={explanations.backpropagation} /> computes how each weight
         contributed to the error, allowing the model to update its parameters
         and gradually improve its predictions.
       </p>
 
       <p>
-        The entire implementation is written from scratch in NumPy to illustrate
+        The entire implementation is written from scratch with NumPy to illustrate
         the fundamental mechanics behind neural networks and to show that it is
         possible to implement such models without relying on machine learning
         frameworks.
@@ -72,10 +74,7 @@ export default function Home() {
       {response && (
         <div>
           <h5>Model finished training</h5>
-          {/* print accuracy with 2 decimals */}
           <p>Accuracy: {(response.accuracy * 100).toFixed(2)}%</p>
-
-          {/* print time elapsed with 1 decimals */}
           <p>Time elapsed: {response.timeElapsed.toFixed(1)} seconds</p>
         </div>
       )}
