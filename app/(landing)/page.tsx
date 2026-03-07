@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import { Loader } from "../components/loader/loader";
-import { Tooltip } from "../components/tooltip/tooltip";
-import explanations from "../tooltip_explanations.json";
+import { Loader } from "../../components/loader/loader";
+import { Tooltip } from "../../components/tooltip/tooltip";
+import explanations from "./tooltip_explanations.json";
 
 type ApiResponse = {
   status: string;
