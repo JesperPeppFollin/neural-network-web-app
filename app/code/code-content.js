@@ -1,32 +1,13 @@
+export const imports_code = `
 # imports
 import numpy as np
-import pathlib
-import urllib.request
+import keras.datasets.mnist as mnist
 import time
+`;
 
-def load_mnist_from_npz(cache_dir=None):
-    """Load MNIST from the public .npz file without requiring keras/tensorflow."""
-    if cache_dir is None:
-        cache_dir = pathlib.Path("/tmp/mnist")
-    else:
-        cache_dir = pathlib.Path(cache_dir)
-
-    cache_dir.mkdir(parents=True, exist_ok=True)
-    dataset_path = cache_dir / "mnist.npz"
-
-    if not dataset_path.exists():
-        url = "https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz"
-        urllib.request.urlretrieve(url, dataset_path)
-
-    with np.load(dataset_path) as data:
-        X_train = data["x_train"]
-        y_train = data["y_train"]
-        X_test = data["x_test"]
-        y_test = data["y_test"]
-
-    return (X_train, y_train), (X_test, y_test)
-
+export const math_class_code = `
 # Math class
+
 class Math:
 
     # -----------------------------
@@ -103,8 +84,9 @@ class Math:
         one_hot_Y = np.zeros((num_classes, Y.size))
         one_hot_Y[Y, np.arange(Y.size)] = 1
         return one_hot_Y
+`;
 
-
+export const classification_NN_code =`
 # Classification NN class
 
 class ClassificationNN():
@@ -128,7 +110,8 @@ class ClassificationNN():
             n_in = layers[i]
             n_out = layers[i + 1]
 
-            W = np.random.randn(n_out, n_in) * np.sqrt(2 / n_in) # He initialization (good for ReLU, can be overridden in children classes)
+            # He initialization (good for ReLU)
+            W = np.random.randn(n_out, n_in) * np.sqrt(2 / n_in)
             b = np.zeros((n_out, 1))
             self.weights.append(W)
             self.biases.append(b)
@@ -231,9 +214,9 @@ class ClassificationNN():
 
     def accuracy(self, Y_pred, Y_true):
         return np.mean(Y_pred == Y_true)
+`;
 
-
-
+export const train_model_code = `
 # Implement custom train mehod
 
 def train(model, X, Y, epochs, learning_rate, batch_size):
@@ -257,39 +240,40 @@ def train(model, X, Y, epochs, learning_rate, batch_size):
             Y_pred = model.predict(X)
             acc = model.accuracy(Y_pred, Y)
             print(f"Epoch {epoch+1}/{epochs} - Accuracy: {acc:.4f}")
+`;
 
-
+export const run_model_code = `
 # init data and use NN
-def run_model():
 
-    start_time = time.time()
+# load MNIST dataset
 
-    # load MNIST dataset
-    (X_train, y_train), (X_test, y_test) = load_mnist_from_npz()
 
-    # Prepare training data
-    m_train = X_train.shape[0]
-    X_train_flat = X_train.reshape(m_train, -1).T / 255.0
-    Y_train = y_train.astype(int)
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
 
-    # Prepare test data
-    m_test = X_test.shape[0]
-    X_test_flat = X_test.reshape(m_test, -1).T / 255.0
-    Y_test = y_test.astype(int)
+# Prepare training data
+m_train = X_train.shape[0]
+X_train_flat = X_train.reshape(m_train, -1).T / 255.0
+Y_train = y_train.astype(int)
 
-    model = ClassificationNN(
-        layers=[784, 128, 64, 10],
-        hidden_activation='reLU',
-        output_activation='softmax',
-        loss='cross_entropy'
-    )
+# Prepare test data (separate, unseen data)
+m_test = X_test.shape[0]
+X_test_flat = X_test.reshape(m_test, -1).T / 255.0
+Y_test = y_test.astype(int)
 
-    train(model, X_train_flat, Y_train, epochs=10, learning_rate=0.01, batch_size=64)
+model = ClassificationNN(
+    layers=[784, 128, 64, 10],
+    hidden_activation='reLU',
+    output_activation='softmax',
+    loss='cross_entropy'
+)
 
-    Y_pred_test = model.predict(X_test_flat)
-    accuracy = model.accuracy(Y_pred_test, Y_test)
-
-    end_time = time.time()
-    time_elapsed = end_time - start_time
-
-    return(float(accuracy), float(time_elapsed))
+# train and test model
+start_time = time.time()
+train(model, X_train_flat, Y_train, epochs=10, learning_rate=0.01, batch_size=64)
+end_time = time.time()
+train_time_elapsed = end_time - start_time
+Y_pred_test = model.predict(X_test_flat)
+accuracy = model.accuracy(Y_pred_test, Y_test)
+print(f"Test Accuracy: {accuracy:.4f}")
+print(f"Time Elapsed: {train_time_elapsed:.4f}")
+`;

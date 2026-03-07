@@ -1,0 +1,38 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.descriptionContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.description {
+    max-width: 800px;
+}
+
+.trainButton {
+    margin-bottom: 32px;
+}
+
+.responseContainer {
+    
+}
+
+.responseTitle {
+    margin-bottom: 16px;
+}
+
+.responseItem {
+    margin-bottom: 8px;
+}
+

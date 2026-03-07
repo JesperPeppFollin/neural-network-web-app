@@ -9,9 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tippyjs/react": "^4.2.6",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-css-spinners": "^4.0.2",
+    "react-dom": "19.2.3",
+    "shiki": "^4.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",

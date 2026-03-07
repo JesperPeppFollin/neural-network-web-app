@@ -1,0 +1,5 @@
+.loader {
+  margin-top: 12px;
+  --rcs-ellipsis-color: var(--foreground);
+  --rcs-ellipsis-size: 40px;
+}

@@ -1,0 +1,11 @@
+{
+  "fully_connected_layer": "A neural network layer where every neuron receives input from all neurons in the previous layer.",
+  "relu": "An activation function (Rectified Linear Unit) that outputs zero for negative values and keeps positive values unchanged.",
+  "activation_function": "A mathematical function applied to a neuron's output to introduce non-linear behavior, allowing the network to model complex relationships.",
+  "softmax": "An activation function used in the output layer of a classification model that converts raw scores into probabilities for each class.",
+  "classification": "A type of machine learning task where a model assigns an input to one of several predefined categories.",
+  "cross_entropy": "A loss function used in classification that measures how different the predicted probability distribution is from the correct labels.",
+  "gradient_descent": "An optimization algorithm that adjusts model parameters step by step to reduce prediction error.",
+  "backpropagation": "An algorithm that computes how much each weight in the network contributed to the error by propagating the error backward through the layers.",
+  "weights": "Adjustable numerical parameters in a neural network that determine how strongly signals between neurons influence each other."
+}
