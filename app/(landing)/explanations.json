@@ -7,5 +7,9 @@
   "cross_entropy": "A loss function used in classification that measures how different the predicted probability distribution is from the correct labels.",
   "gradient_descent": "An optimization algorithm that adjusts model parameters step by step to reduce prediction error.",
   "backpropagation": "An algorithm that computes how much each weight in the network contributed to the error by propagating the error backward through the layers.",
-  "weights": "Adjustable numerical parameters in a neural network that determine how strongly signals between neurons influence each other."
+  "weights": "Adjustable numerical parameters in a neural network that determine how strongly signals between neurons influence each other.",
+  "MNIST": "A dataset of 70,000 handwritten digit images (0-9). Each image is 28x28 grayscale and widely used for training and testing simple image classifiers.",
+  "Fashion_MNIST": "A MNIST-format dataset of clothing images such as shirts, shoes, and bags. It keeps the same 28x28 grayscale format but is slightly harder to classify.",
+  "EMNIST": "An extended version of MNIST that includes handwritten letters as well as digits. Some variants contain up to 62 character classes.",
+  "KMNIST": "A MNIST-style dataset of classical Japanese cursive characters. It keeps the 28x28 grayscale format but is more visually complex."
 }

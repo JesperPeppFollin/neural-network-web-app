@@ -3,13 +3,16 @@ import { useState } from "react";
 import { Loader } from "../../components/loader/loader";
 import { Tooltip } from "../../components/tooltip/tooltip";
 import { Button } from "../../components/button/button";
-import explanations from "./tooltip_explanations.json";
+import explanations from "./explanations.json";
 import styles from "./page.module.css";
 
 type ApiResponse = {
   status: string;
-  accuracy: number;
+  testAccuracy: number;
+  trainAccuracy: number;
+  epochs: number;
   timeElapsed: number;
+  architecture: number[];
 };
 
 export default function Home() {
@@ -46,7 +49,7 @@ export default function Home() {
         <p className={styles.description}>
           This demo demonstrates a small feed-forward neural network trained to
           classify handwritten digits from the{" "}
-          <a href="https://www.tensorflow.org/datasets/catalog/mnist">MNIST</a>{" "}
+          <a href="https://www.tensorflow.org/datasets/catalog/mnist" target="_blank" rel="noopener noreferrer">MNIST</a>{" "}
           dataset. Each 28x28 image is flattened into a vector and passed
           through several fully connected layers with{" "}
           <Tooltip title="ReLU" explanation={explanations.relu} /> activations,
@@ -98,13 +101,37 @@ export default function Home() {
 
       {response && (
         <div className={styles.responseContainer}>
-          <h3 className={styles.responseTitle}>Model finished</h3>
-          <div className={styles.responseItem}>
-            <p>Accuracy: {(response.accuracy * 100).toFixed(2)}%</p>
-          </div>
-          <div className={styles.responseItem}>
-            <p>Time elapsed: {response.timeElapsed.toFixed(1)} seconds</p>
-          </div>
+          <h4 className={styles.responseTitle}>Model Result</h4>
+          <table className={styles.responseTable}>
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Test Accuracy</td>
+                <td>{(response.testAccuracy * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Train Accuracy</td>
+                <td>{(response.trainAccuracy * 100).toFixed(2)}%</td>
+              </tr>
+              <tr>
+                <td>Epochs</td>
+                <td>{response.epochs}</td>
+              </tr>
+              <tr>
+                <td>Time Elapsed</td>
+                <td>{response.timeElapsed.toFixed(1)} seconds</td>
+              </tr>
+              <tr>
+                <td>Architecture</td>
+                <td>{response.architecture.join(" → ")}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       )}
     </main>

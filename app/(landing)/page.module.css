@@ -2,37 +2,66 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: min(960px, 100%);
+    margin: 0 auto;
+    padding: var(--size-7) var(--size-4) var(--size-8);
 }
 
 .title {
-    margin-top: 16px;
-    margin-bottom: 32px;
+    margin-top: var(--size-2);
+    margin-bottom: var(--size-5);
+    text-align: center;
+    color: var(--text);
 }
 
 .descriptionContainer{
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 32px;
+    align-items: center;
+    gap: var(--size-3);
+    width: 100%;
+    padding: var(--size-4);
+    margin-bottom: var(--size-7);
+    
 }
 
 .description {
     max-width: 800px;
+    line-height: 1.65;
 }
 
 .trainButton {
-    margin-bottom: 32px;
+    margin-bottom: var(--size-7);
 }
 
 .responseContainer {
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    padding: var(--size-3) var(--size-4);
 }
 
 .responseTitle {
-    margin-bottom: 16px;
+    margin-bottom: var(--size-3);
+    
 }
 
-.responseItem {
-    margin-bottom: 8px;
+/* .responseTable {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text);
+} */
+
+.responseTable th,
+.responseTable td {
+    padding: var(--size-2) var(--size-3);
+    text-align: left;
 }
 
+.responseTable th {
+    color: var(--text-muted);
+    font-weight: 600;
+}

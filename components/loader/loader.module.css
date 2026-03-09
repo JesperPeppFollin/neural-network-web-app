@@ -1,5 +1,5 @@
 .loader {
-  margin-top: 12px;
-  --rcs-ellipsis-color: var(--foreground);
-  --rcs-ellipsis-size: 40px;
+  margin-top: var(--size-3);
+  --rcs-ellipsis-color: var(--text);
+  --rcs-ellipsis-size: var(--size-7);
 }

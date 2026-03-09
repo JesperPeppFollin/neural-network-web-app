@@ -1,0 +1,99 @@
+/* Desktop: fixed sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: var(--size-10);
+    left: 0;
+    width: 180px;
+    padding: var(--size-4) var(--size-3);
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+}
+
+.sidebarTitle {
+    font-size: var(--font-size-2);
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--size-2);
+}
+
+.sidebarList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-1);
+}
+
+.sidebarLink {
+    display: block;
+    font-size: var(--font-size-1);
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: var(--size-1) var(--size-2);
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.sidebarLink:hover {
+    color: var(--text);
+    border-left-color: var(--brand-5);
+    text-decoration: none;
+}
+
+.dropdownToggle {
+    display: none;
+}
+
+/* Mobile: dropdown menu */
+@media (max-width: 1200px) {
+    .sidebar {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        padding: var(--size-2) var(--size-3);
+        background: var(--bg-0);
+        /* border-bottom: 1px solid var(--border); */
+        z-index: 10;
+    }
+
+    .sidebarTitle {
+        display: none;
+    }
+
+    .dropdownToggle {
+        display: block;
+        width: 100%;
+        padding: var(--size-2) var(--size-3);
+        background: var(--bg-0);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text);
+        font-size: var(--font-size-1);
+        font-weight: 500;
+        cursor: pointer;
+        text-align: left;
+    }
+
+    .sidebarList {
+        display: none;
+        padding: var(--size-2) 0;
+    }
+
+    .sidebarListOpen {
+        display: flex;
+    }
+
+    .sidebarLink {
+        border-left: none;
+        padding: var(--size-2) var(--size-3);
+    }
+
+    .sidebarLink:hover {
+        border-left-color: transparent;
+        background: var(--bg-1);
+        border-radius: var(--radius);
+    }
+}

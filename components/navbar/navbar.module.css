@@ -1,0 +1,62 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--size-3) var(--size-4);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-0);
+    position: relative;
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    gap: var(--size-5);
+}
+
+.github {
+    position: absolute;
+    right: var(--size-4);
+    color: var(--text-muted);
+    transition: color 0.15s;
+    display: flex;
+    align-items: center;
+}
+
+.github:hover {
+    color: var(--text);
+}
+
+.link {
+    position: relative;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-decoration: none;
+    padding: var(--size-1) var(--size-2) var(--size-2);
+    transition: color 0.15s;
+}
+
+.link::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--brand-3);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.link:hover {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.active {
+    color: var(--text);
+}
+
+.active::after {
+    width: 100%;
+}

@@ -258,6 +258,8 @@ def train(model, X, Y, epochs, learning_rate, batch_size):
             acc = model.accuracy(Y_pred, Y)
             print(f"Epoch {epoch+1}/{epochs} - Accuracy: {acc:.4f}")
 
+        return acc
+
 
 # init data and use NN
 def run_model():
@@ -277,6 +279,10 @@ def run_model():
     X_test_flat = X_test.reshape(m_test, -1).T / 255.0
     Y_test = y_test.astype(int)
 
+    epochs = 10
+    learning_rate = 0.01
+    batch_size = 64
+
     model = ClassificationNN(
         layers=[784, 128, 64, 10],
         hidden_activation='reLU',
@@ -284,12 +290,18 @@ def run_model():
         loss='cross_entropy'
     )
 
-    train(model, X_train_flat, Y_train, epochs=10, learning_rate=0.01, batch_size=64)
+    train_accuracy = train(model, X_train_flat, Y_train, epochs=epochs, learning_rate=learning_rate, batch_size=batch_size)
 
     Y_pred_test = model.predict(X_test_flat)
-    accuracy = model.accuracy(Y_pred_test, Y_test)
+    test_accuracy = model.accuracy(Y_pred_test, Y_test)
 
     end_time = time.time()
     time_elapsed = end_time - start_time
 
-    return(float(accuracy), float(time_elapsed))
+    return {
+        "testAccuracy": float(test_accuracy),
+        "trainAccuracy": float(train_accuracy),
+        "epochs": epochs,
+        "timeElapsed": float(time_elapsed),
+        "architecture": model.layers,
+    }

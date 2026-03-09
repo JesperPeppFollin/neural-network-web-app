@@ -8,10 +8,9 @@ CORS(app)
 @app.route("/api/run")
 def run_script():
     
-    accuracy, timeElapsed = run_model()
+    result = run_model()
 
     return jsonify({
         "status": "finished",
-        "accuracy": accuracy,
-        "timeElapsed": timeElapsed
+        **result
     })
