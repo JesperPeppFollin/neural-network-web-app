@@ -246,8 +246,6 @@ export const run_model_code = `
 # init data and use NN
 
 # load MNIST dataset
-
-
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
 # Prepare training data
