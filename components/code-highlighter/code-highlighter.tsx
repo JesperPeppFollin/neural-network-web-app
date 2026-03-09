@@ -13,5 +13,5 @@ export async function PythonCode({code}: { code: string }) {
 
   const html = await highlightPython(code);
 
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  return <div className={styles.codeWrapper} dangerouslySetInnerHTML={{ __html: html }} />;
 }

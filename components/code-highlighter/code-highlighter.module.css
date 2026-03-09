@@ -1,0 +1,11 @@
+.codeWrapper pre {
+    background: transparent !important;
+    margin: 0;
+    padding: 0;
+}
+
+.codeWrapper code {
+    background: transparent !important;
+    font-family: 'Menlo', 'Monaco', 'Consolas', monospace;
+    line-height: 1.6;
+}

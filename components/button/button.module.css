@@ -26,3 +26,10 @@
     background-color: var(--brand-2);
     border-color: var(--brand-3);
 }
+
+.button:disabled {
+    background-color: var(--brand-0);
+    border-color: var(--brand-2);
+    color: var(--text-muted);
+    cursor: not-allowed;
+}
