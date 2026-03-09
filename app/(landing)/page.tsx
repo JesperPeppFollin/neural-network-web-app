@@ -26,7 +26,7 @@ export default function Home() {
 
     try {
       // change back to "/api/run" when running in production
-      const res = await fetch("/api/run");
+      const res = await fetch("api/run");
 
       if (!res.ok) {
         throw new Error(`Request failed with status ${res.status}`);
