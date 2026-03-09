@@ -76,7 +76,7 @@ export default function Page() {
           code={run_model_code}
         />
         <p className={styles.disclaimer}>
-          <span className={styles.disclaimerTitle}>Note:</span> The code shown
+          <span className={styles.disclaimerTitle}>Disclaimer:</span> The code shown
           above is the original Python implementation, kept intact to maintain
           clarity and explainability. The version running behind the API has
           been slightly modified to work as a web service.
