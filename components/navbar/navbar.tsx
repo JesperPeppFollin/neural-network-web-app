@@ -23,7 +23,7 @@ export function Navbar() {
         </Link>
       </div>
       <a
-        href="https://github.com/JesperPeppFollin/Neural-Network-python-from-scratch"
+        href="https://github.com/JesperFollin/Neural-Network-python-from-scratch"
         target="_blank"
         rel="noopener noreferrer"
         className={styles.github}
